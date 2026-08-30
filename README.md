@@ -5,7 +5,7 @@
 ### Just A Rather Very Intelligent System
 
 <p>
-  <strong>A secure, cross-platform personal AI assistant ecosystem for Android, Windows, and authorized devices.</strong>
+  <strong>A secure, cross-platform personal AI assistant ecosystem for Android, Windows, Linux, and authorized devices.</strong>
 </p>
 
 <p>
@@ -16,11 +16,9 @@
 </p>
 
 <p>
-  <a href="#-about"><strong>About</strong></a> ·
-  <a href="#-features"><strong>Features</strong></a> ·
-  <a href="#-architecture"><strong>Architecture</strong></a> ·
-  <a href="#-roadmap"><strong>Roadmap</strong></a> ·
-  <a href="#-contributing"><strong>Contribute</strong></a>
+  <a href="https://github.com/Vipul7526/jarvis"><strong>View Repository</strong></a> ·
+  <a href="https://github.com/Vipul7526/jarvis/issues"><strong>Report Issue</strong></a> ·
+  <a href="https://www.youtube.com/@ps4326"><strong>YouTube @ps4326</strong></a>
 </p>
 
 </div>
@@ -29,15 +27,17 @@
 
 ## About
 
-**J.A.R.V.I.S.** is a security-first personal AI assistant designed to connect intelligent conversations, local inference, voice interaction, automation, and authorized device control into one ecosystem.
+**J.A.R.V.I.S.** is a security-first personal AI assistant designed to connect intelligent conversations, local inference, voice interaction, automation, and authorized device control into one unified ecosystem.
 
-It can route requests between configured cloud AI providers, phone-local models, Windows desktop AI powered by **llama.cpp**, and a deterministic offline command core. When the Internet is unavailable, J.A.R.V.I.S. is designed to continue operating through local models, nearby authorized devices, and predefined offline capabilities.
+J.A.R.V.I.S. can route requests between configured cloud AI providers, phone-local models, Windows desktop AI powered by **llama.cpp**, and a deterministic offline command core. When the Internet is unavailable, it is designed to continue through local models, nearby authorized devices, and predefined offline capabilities.
 
-The project is being developed as a distributed system rather than a UI-only demo. Android and Windows clients are designed to work as parts of the same ecosystem through authenticated sessions, structured device communication, secure pairing, and explicit permission controls.
+The project is being developed as a distributed system rather than a UI-only demo. Android, Windows, and future Linux clients are intended to work as parts of the same ecosystem through authenticated sessions, structured device communication, secure pairing, and explicit permission controls.
 
 > **Vision:** Build a private, extensible, and intelligent assistant that remains useful online and offline while keeping the user in control of credentials, permissions, devices, and data.
 
-## Platforms
+## Platform support and coming releases
+
+### Available project targets
 
 <p align="center">
   <a href="https://www.android.com/"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android"></a>
@@ -45,11 +45,27 @@ The project is being developed as a distributed system rather than a UI-only dem
   <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"></a>
 </p>
 
-| Platform | Role |
+### Coming soon
+
+J.A.R.V.I.S. is planned for **Linux**, **Ubuntu**, **Debian**, and **Kali Linux**. The project also plans desktop packaging for Windows installers and a future macOS `.dmg` image where the required platform toolchain and release signing are available.
+
+<p align="center">
+  <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"></a>
+  <a href="https://ubuntu.com/"><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu"></a>
+  <a href="https://www.debian.org/"><img src="https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white" alt="Debian"></a>
+  <a href="https://www.kali.org/"><img src="https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kalilinux&logoColor=white" alt="Kali Linux"></a>
+  <a href="https://www.apple.com/macos/"><img src="https://img.shields.io/badge/macOS_.dmg-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS DMG planned"></a>
+</p>
+
+| Target | Planned delivery |
 |---|---|
-| **Android** | Mobile assistant, voice interface, wake-word support, discovery, pairing, notifications, and device control. |
-| **Windows** | Desktop HUD, system integration, local AI, llama.cpp management, model management, automation, and device gateway. |
-| **Authorized devices** | Phones, PCs, tablets, TVs, media devices, and supported IoT devices connected through explicit pairing and permissions. |
+| **Android** | Mobile assistant, voice interface, wake word, discovery, pairing, notifications, and device control. |
+| **Windows** | Desktop HUD, system integration, local AI, llama.cpp management, automation, and device gateway. |
+| **Linux** | Native desktop support for Linux distributions, subject to platform integration and packaging work. |
+| **Ubuntu** | Debian-based package and setup documentation planned. |
+| **Debian** | Debian package and dependency profile planned. |
+| **Kali Linux** | Security-focused Linux compatibility and installation guidance planned. |
+| **macOS `.dmg`** | Future disk-image packaging target; not yet available. |
 
 ## Features
 
@@ -58,7 +74,7 @@ The project is being developed as a distributed system rather than a UI-only dem
 - Online AI through configurable cloud providers.
 - Offline Core for predefined commands, calculations, cached information, and local status checks.
 - Local AI support using **llama.cpp** and **GGUF** models.
-- AI routing with graceful fallback between cloud, phone-local, desktop-local, and offline processing.
+- AI routing with fallback between cloud, phone-local, desktop-local, and offline processing.
 - Streaming response architecture for conversational experiences.
 - Model detection, selection, health monitoring, and inference testing.
 
@@ -67,7 +83,7 @@ The project is being developed as a distributed system rather than a UI-only dem
 - Speech-to-text and text-to-speech support.
 - Local voice activity detection.
 - Local wake-word detection with `JARVIS` and optional `Hey JARVIS` support.
-- Conversation states such as `IDLE`, `LISTENING`, `THINKING`, `SPEAKING`, `EXECUTING`, `OFFLINE`, and `ERROR`.
+- Conversation states including `IDLE`, `LISTENING`, `THINKING`, `SPEAKING`, `EXECUTING`, `OFFLINE`, and `ERROR`.
 - Explicit microphone and speech permission explanations.
 
 ### Device ecosystem
@@ -92,7 +108,7 @@ The project is being developed as a distributed system rather than a UI-only dem
 
 ### Experience and operations
 
-- Cinematic HUD with an original futuristic visual language.
+- Original cinematic HUD with a futuristic visual language.
 - Theme system with blue, cyan, amber, green, purple, magenta, orange, red, white, and custom options.
 - Online Google Fonts with bundled offline font fallbacks.
 - Guided setup wizard from legal acceptance through initialization.
@@ -139,7 +155,7 @@ The project is being developed as a distributed system rather than a UI-only dem
                                                  |
                                       localhost-only service
 
-Android / Windows / authorized devices
+Android / Windows / Linux / authorized devices
                 |
        JARVIS Discovery + JDP/1.0
                 |
@@ -164,6 +180,86 @@ Internet available?
           +-- Otherwise -> Offline Core
 ```
 
+## Step-by-step API setup guide
+
+> **Security rule:** Never paste API keys, OAuth client secrets, Gmail app passwords, pairing secrets, or approved-user data into source code, screenshots, GitHub issues, APKs, EXEs, or public repositories.
+
+### 1. Prepare the backend
+
+```bash
+git clone https://github.com/Vipul7526/jarvis.git
+cd jarvis/backend
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -e '.[test]'
+cp .env.example .env
+```
+
+Generate a strong session secret and place it only in the backend `.env` file or deployment secret manager:
+
+```bash
+python3 -c "import secrets; print(secrets.token_urlsafe(48))"
+```
+
+Set `SESSION_SECRET` to the generated value. Do not commit `.env`.
+
+### 2. Configure Groq API access
+
+1. Open the [Groq Console](https://console.groq.com/).
+2. Create or sign in to an account.
+3. Open the API keys section and create a key.
+4. Copy it once into the backend secret store.
+5. Set `GROQ_API_KEY` in the backend environment.
+6. Use the provider test endpoint when the Groq adapter is enabled.
+7. Revoke and regenerate the key immediately if it is exposed.
+
+### 3. Configure OpenAI API access
+
+1. Open the [OpenAI API platform](https://platform.openai.com/).
+2. Sign in and review the account's API access and billing requirements.
+3. Open the API keys page and create a secret key.
+4. Store the key only in the backend secret store.
+5. Set `OPENAI_API_KEY` in the backend environment.
+6. Configure an allowed model in the server-side provider adapter.
+7. Test the connection without printing the key or request headers to logs.
+
+### 4. Configure Google AI access
+
+1. Open [Google AI Studio](https://aistudio.google.com/).
+2. Sign in with the Google account that will own the integration.
+3. Create an API key from the API-key management area.
+4. Store it only in the backend secret store.
+5. Set `GOOGLE_AI_API_KEY` in the backend environment.
+6. Select an allowed model and test the provider from the backend.
+7. Review Google's current service terms, quotas, and data-processing rules before enabling it.
+
+### 5. Configure Gmail SMTP for OTP email
+
+1. Use a dedicated Gmail account for J.A.R.V.I.S. mail delivery.
+2. Enable the required Google account security protections.
+3. Create a Gmail app password if the account and Google security settings support it.
+4. Set `GMAIL_USER` and `GMAIL_APP_PASSWORD` only in backend deployment secrets.
+5. Never place them in Flutter, Java, C++, Python client code, APKs, EXEs, logs, or GitHub.
+6. Send only short-lived OTPs and security notifications; never log OTP values.
+7. Test delivery in a development environment with a non-production mailbox.
+
+### 6. Configure OAuth providers
+
+For Google, Microsoft, Yahoo, and GitHub OAuth, register a server-side application with the provider, define exact HTTPS redirect URIs, store client secrets only on the backend, validate OAuth state, use PKCE where supported, and exchange authorization codes server-side. Add only the required provider credentials to the backend deployment environment.
+
+### 7. Configure local AI
+
+Install a compatible [llama.cpp](https://github.com/ggml-org/llama.cpp) build and obtain a legally usable GGUF model. Set `LLAMA_CPP_EXECUTABLE`, `LLAMA_CPP_MODEL`, `LOCAL_AI_HOST=127.0.0.1`, and `LOCAL_AI_PORT=11435`. Test executable detection, model detection, server health, and actual inference separately. Do not report the model as ready until inference succeeds.
+
+### 8. Run tests and start the backend
+
+```bash
+python -m pytest -q
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+The current foundation reports unavailable integrations as `UNKNOWN`, `FAIL`, or `NOT_CONFIGURED` rather than pretending they are online.
+
 ## Security principles
 
 J.A.R.V.I.S. follows a **permission-first and trust-by-pairing** model:
@@ -178,8 +274,6 @@ J.A.R.V.I.S. follows a **permission-first and trust-by-pairing** model:
 
 ## Project status
 
-The repository currently contains the initial project description and MIT license. The broader J.A.R.V.I.S. implementation is being developed in staged components, beginning with the secure backend control-plane contracts and local-AI boundaries.
-
 | Component | Status |
 |---|---|
 | Project definition and architecture | In progress |
@@ -189,6 +283,8 @@ The repository currently contains the initial project description and MIT licens
 | llama.cpp local-AI boundary | Service boundary implemented |
 | Android application | Planned / requires Flutter and Android SDK |
 | Windows desktop application | Planned / requires Flutter and Windows SDK |
+| Linux, Ubuntu, Debian, and Kali clients | Coming soon |
+| macOS `.dmg` image | Future packaging target |
 | Voice and wake word | Planned / requires platform audio adapters |
 | OAuth and Gmail OTP delivery | Planned / requires provider configuration |
 | Production database and deployment | Planned |
@@ -196,41 +292,18 @@ The repository currently contains the initial project description and MIT licens
 
 ## Roadmap
 
-- [ ] Complete the production database, migrations, and session persistence.
+- [ ] Complete production database, migrations, session persistence, and deployment.
 - [ ] Add real OAuth providers and backend email OTP delivery.
 - [ ] Build the Flutter Android client and Java platform integrations.
 - [ ] Build the Flutter Windows client and C++ Windows bridge.
+- [ ] Add Linux desktop support with Ubuntu, Debian, and Kali installation profiles.
+- [ ] Add Windows installer and future macOS `.dmg` packaging.
 - [ ] Integrate and test llama.cpp with selected GGUF models.
-- [ ] Add real LAN, mDNS, UDP, Bluetooth, and BLE discovery adapters.
+- [ ] Add LAN, mDNS, UDP, Bluetooth, and BLE discovery adapters.
 - [ ] Implement voice, TTS, STT, VAD, and local wake-word adapters.
 - [ ] Build the admin dashboard, Help Center, Legal Center UI, and setup wizard.
-- [ ] Create signed Android, Windows, and installer release pipelines.
+- [ ] Add signed Android, Windows, Linux, and future macOS release pipelines.
 - [ ] Add end-to-end security, device, offline, and hardware testing.
-
-## Getting started
-
-### Backend foundation
-
-```bash
-git clone https://github.com/Vipul7526/jarvis.git
-cd jarvis
-```
-
-The backend implementation is being maintained as a separate staged workspace while the multi-platform repository structure is finalized. When the backend directory is present, run it with:
-
-```bash
-cd backend
-python3 -m venv .venv
-. .venv/bin/activate
-python -m pip install -e '.[test]'
-cp .env.example .env
-python -m pytest -q
-uvicorn app.main:app --host 127.0.0.1 --port 8000
-```
-
-### Configuration safety
-
-Never commit `.env` files, API keys, OAuth client secrets, Gmail app passwords, pairing secrets, GGUF model files, or private allowlists. Use deployment environment variables or a secure secret manager.
 
 ## Repository structure
 
@@ -249,7 +322,7 @@ jarvis/
 
 ## Contributing
 
-Contributions are welcome. Before opening a pull request, explain the change, include tests where practical, avoid adding secrets or personal data, and preserve the security boundaries around authentication, pairing, device control, and local AI. Changes that affect legal documents, protocol contracts, permissions, or destructive commands should include updated documentation and explicit review notes.
+Contributions are welcome. Before opening a pull request, explain the change, include tests where practical, avoid adding secrets or personal data, and preserve the security boundaries around authentication, pairing, device control, and local AI. Changes affecting legal documents, protocol contracts, permissions, or destructive commands should include updated documentation and explicit review notes.
 
 1. Fork the repository.
 2. Create a focused feature branch.
@@ -261,12 +334,14 @@ Contributions are welcome. Before opening a pull request, explain the change, in
 
 J.A.R.V.I.S. is distributed under the [MIT License](LICENSE). Third-party software, AI providers, GGUF models, fonts, icons, and media may have separate licenses and terms.
 
-## Support and contact
+## Support and YouTube
 
 For project questions, support, privacy questions, or security reports:
 
 - **jarvissubsystems@gmail.com**
 - **princesingh305305@gmail.com**
+
+Follow project updates and demonstrations on [YouTube — @ps4326](https://www.youtube.com/@ps4326).
 
 <div align="center">
 
@@ -274,6 +349,6 @@ For project questions, support, privacy questions, or security reports:
 
 <a href="https://github.com/Vipul7526/jarvis/issues">Report an Issue</a> ·
 <a href="https://github.com/Vipul7526/jarvis/discussions">Join the Discussion</a> ·
-<a href="https://github.com/Vipul7526/jarvis">View Repository</a>
+<a href="https://www.youtube.com/@ps4326">Watch on YouTube</a>
 
 </div>
