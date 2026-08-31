@@ -77,6 +77,20 @@ def test_pairing_requires_the_exact_code_and_authorizes_device() -> None:
     assert devices.is_authorized("desktop-1", "text_generation")
 
 
+def test_revoked_device_loses_authorization() -> None:
+    devices = DeviceService(300)
+    started = devices.start_pairing(
+        PairingStartRequest(device_id="desktop-1", device_type="windows", capabilities=["text_generation"])
+    )
+    devices.confirm_pairing(
+        PairingConfirmRequest(pairing_id=started.pairing_id, numeric_code=started.numeric_code, permissions=["text_generation"])
+    )
+    revoked = devices.revoke("desktop-1")
+    assert revoked.trust_state == "REVOKED"
+    assert revoked.permissions == []
+    assert devices.is_authorized("desktop-1") is False
+
+
 def test_high_risk_command_requires_confirmation() -> None:
     devices = DeviceService(300)
     started = devices.start_pairing(PairingStartRequest(device_id="desktop-1", device_type="windows"))

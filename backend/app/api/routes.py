@@ -252,6 +252,20 @@ def diagnostics(
     return DiagnosticsResponse(checks=checks)
 
 
+@router.post("/admin/devices/{device_id}/revoke", response_model=DeviceRecord)
+def revoke_device(
+    device_id: str,
+    context: Annotated[AppContext, Depends(get_context)],
+    claims: Annotated[SessionClaims, Depends(require_admin)],
+) -> DeviceRecord:
+    try:
+        record = context.devices.revoke(device_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    context.audit.record("DEVICE_REVOKED", claims.user_id)
+    return record
+
+
 @router.get("/admin/summary")
 def admin_summary(
     context: Annotated[AppContext, Depends(get_context)],

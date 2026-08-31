@@ -8,4 +8,4 @@ Build the admin client against the protected backend API. Every administrative e
 
 ## Safety
 
-Admin actions such as approve, revoke, disable, enable, legal-document updates, and configuration changes should require clear confirmation and produce immutable or tamper-evident audit records in production.
+The current backend includes `POST /api/v1/admin/devices/{device_id}/revoke`, which clears device permissions and changes the trust state to `REVOKED`. Admin actions such as approve, revoke, disable, enable, legal-document updates, and configuration changes should require clear confirmation and produce immutable or tamper-evident audit records in production.

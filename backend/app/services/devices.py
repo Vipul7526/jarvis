@@ -93,6 +93,15 @@ class DeviceService:
         with self._lock:
             return list(self._devices.values())
 
+    def revoke(self, device_id: str) -> DeviceRecord:
+        with self._lock:
+            existing = self._devices.get(device_id)
+            if existing is None:
+                raise ValueError("device not found")
+            revoked = existing.model_copy(update={"trust_state": "REVOKED", "permissions": []})
+            self._devices[device_id] = revoked
+            return revoked
+
     def is_authorized(self, device_id: str, permission: str | None = None) -> bool:
         record = self.get(device_id)
         if record is None or record.trust_state != "AUTHORIZED":
