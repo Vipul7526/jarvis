@@ -98,7 +98,7 @@ def request_otp(payload: OTPRequest, context: Annotated[AppContext, Depends(get_
     # Return a generic result so this endpoint cannot be used to enumerate users.
     try:
         challenge = context.otp.issue(payload.email)
-    except ValueError:
+    except (ValueError, RuntimeError):
         return OTPRequestResponse(
             status="UNAVAILABLE",
             message="If the address can be used, a verification code will be sent.",

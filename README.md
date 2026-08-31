@@ -260,6 +260,17 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000
 
 The current foundation reports unavailable integrations as `UNKNOWN`, `FAIL`, or `NOT_CONFIGURED` rather than pretending they are online.
 
+## Publish and backup workflow
+
+For future development batches, use the repository helper to commit changes, push them to GitHub, create a checksum-protected source archive, and upload a new backup to the configured Google Drive folder:
+
+```bash
+export JARVIS_DRIVE_PARENT_ID="your-google-drive-folder-id"
+./scripts/publish_and_backup.sh
+```
+
+The script never stores credentials, refuses to run without a Drive destination, excludes Git metadata and generated caches, and never deletes existing Drive backups. Review the commit and working tree before publishing.
+
 ## Security principles
 
 J.A.R.V.I.S. follows a **permission-first and trust-by-pairing** model:
