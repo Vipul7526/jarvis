@@ -36,6 +36,23 @@ class Identity(BaseModel):
     username: str | None = Field(default=None, max_length=100)
 
 
+class OTPRequest(BaseModel):
+    email: str = Field(min_length=3, max_length=320)
+
+
+class OTPRequestResponse(BaseModel):
+    status: Literal["CHALLENGE_CREATED", "UNAVAILABLE"]
+    challenge_id: UUID | None = None
+    expires_at: datetime | None = None
+    message: str
+
+
+class OTPVerifyRequest(BaseModel):
+    challenge_id: UUID
+    email: str = Field(min_length=3, max_length=320)
+    code: str = Field(pattern=r"^\\d{6}$")
+
+
 class SessionResponse(BaseModel):
     status: Literal["AUTHORIZED", "NOT_AUTHORIZED"]
     access_token: str | None = None

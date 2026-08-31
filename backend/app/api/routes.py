@@ -16,6 +16,9 @@ from app.core.contracts import (
     Identity,
     JDPMessage,
     LegalAcceptanceRequest,
+    OTPRequest,
+    OTPRequestResponse,
+    OTPVerifyRequest,
     PairingConfirmRequest,
     PairingStartRequest,
     PairingStartResponse,
@@ -28,6 +31,7 @@ from app.services.commands import OfflineCommandEngine
 from app.services.devices import DeviceService
 from app.services.discovery import DiscoveryManager
 from app.services.legal import LegalService
+from app.services.otp import OTPService
 
 
 @dataclass
@@ -47,6 +51,7 @@ class AppContext:
     ai: AIOrchestrator
     discovery: DiscoveryManager
     audit: AuditLog
+    otp: OTPService
 
 
 def get_context(request: Request) -> AppContext:
@@ -86,6 +91,36 @@ def healthz(context: Annotated[AppContext, Depends(get_context)]) -> dict[str, o
         "time": utc_now().isoformat(),
         "discovery": [capability.__dict__ for capability in context.discovery.capabilities()],
     }
+
+
+@router.post("/auth/otp/request", response_model=OTPRequestResponse)
+def request_otp(payload: OTPRequest, context: Annotated[AppContext, Depends(get_context)]) -> OTPRequestResponse:
+    # Return a generic result so this endpoint cannot be used to enumerate users.
+    try:
+        challenge = context.otp.issue(payload.email)
+    except ValueError:
+        return OTPRequestResponse(
+            status="UNAVAILABLE",
+            message="If the address can be used, a verification code will be sent.",
+        )
+    context.audit.record("OTP_REQUESTED", "redacted")
+    return OTPRequestResponse(
+        status="CHALLENGE_CREATED",
+        challenge_id=challenge.challenge_id,
+        expires_at=challenge.expires_at,
+        message="If the address can be used, a verification code will be sent.",
+    )
+
+
+@router.post("/auth/otp/verify", response_model=SessionResponse)
+def verify_otp(payload: OTPVerifyRequest, context: Annotated[AppContext, Depends(get_context)]) -> SessionResponse:
+    if not context.otp.verify(payload.challenge_id, payload.email, payload.code):
+        context.audit.record("OTP_DENIED", "redacted")
+        return SessionResponse(status="NOT_AUTHORIZED")
+    identity = Identity(provider="email", subject=payload.email, email=payload.email)
+    response = context.auth.authenticate(identity)
+    context.audit.record("OTP_AUTHORIZED" if response.status == "AUTHORIZED" else "OTP_NOT_AUTHORIZED", "redacted")
+    return response
 
 
 @router.post("/auth/check", response_model=SessionResponse)

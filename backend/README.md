@@ -1,6 +1,6 @@
 # Backend
 
-The `backend/` folder contains the J.A.R.V.I.S. FastAPI control plane. It owns authentication decisions, legal acceptance records, secure pairing, device authorization, command-risk policies, AI routing, discovery contracts, diagnostics, and the WebSocket readiness channel.
+The `backend/` folder contains the J.A.R.V.I.S. FastAPI control plane. It owns authentication decisions, email OTP challenges, legal acceptance records, secure pairing, device authorization, command-risk policies, AI routing, discovery contracts, diagnostics, and the WebSocket readiness channel.
 
 ## Setup
 
@@ -28,4 +28,4 @@ Use deployment secrets for API keys, OAuth credentials, Gmail app passwords, ses
 
 ## Important notes
 
-The current repositories are in-memory for the first deterministic implementation slice. Replace them with a shared database and cache before production. The API must not claim OAuth, email delivery, voice, Bluetooth, model readiness, or native platform availability until real adapters and integration tests pass.
+The current repositories are in-memory for the first deterministic implementation slice. Replace them with a shared database and cache before production. OTP routes are available, but Gmail delivery remains disabled until `GMAIL_USER` and `GMAIL_APP_PASSWORD` are supplied through backend deployment secrets. The API must not claim OAuth, voice, Bluetooth, model readiness, or native platform availability until real adapters and integration tests pass.

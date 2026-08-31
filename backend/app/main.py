@@ -11,7 +11,9 @@ from app.services.auth import AllowlistService, AuthService
 from app.services.commands import OfflineCommandEngine
 from app.services.devices import DeviceService
 from app.services.discovery import DiscoveryManager
+from app.services.email import GmailSMTPEmailSender
 from app.services.legal import LegalService
+from app.services.otp import OTPService
 
 
 def create_app() -> FastAPI:
@@ -25,6 +27,7 @@ def create_app() -> FastAPI:
         ai=AIOrchestrator(settings),
         discovery=DiscoveryManager(),
         audit=AuditLog(),
+        otp=OTPService(GmailSMTPEmailSender()),
     )
     context.commands = OfflineCommandEngine(context.devices)
 
