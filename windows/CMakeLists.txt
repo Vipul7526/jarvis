@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(jarvis_bridge STATIC native_bridge/jarvis_bridge.cpp)
+target_include_directories(jarvis_bridge PUBLIC native_bridge)
 target_compile_definitions(jarvis_bridge PRIVATE UNICODE _UNICODE)

@@ -1,16 +1,10 @@
 // Orbital Instrument direction: keep the native boundary small, observable, and explicit about unavailable capabilities.
-#include <string>
+#include "jarvis_bridge.h"
 #if defined(_WIN32)
 #include <windows.h>
 #endif
 
 namespace jarvis {
-
-struct CapabilityReport {
-  std::string platform;
-  bool local_model_boundary_ready;
-  bool device_control_ready;
-};
 
 CapabilityReport capability_report() {
   return {
