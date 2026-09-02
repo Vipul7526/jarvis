@@ -1,6 +1,8 @@
 // Orbital Instrument direction: keep the native boundary small, observable, and explicit about unavailable capabilities.
 #include <string>
+#if defined(_WIN32)
 #include <windows.h>
+#endif
 
 namespace jarvis {
 

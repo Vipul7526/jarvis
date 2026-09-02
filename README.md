@@ -32,9 +32,6 @@ The repository currently contains an executable FastAPI control-plane foundation
 | `android/` | Reserved for Flutter + Java client implementation |
 | `windows/` | Reserved for Flutter + C++ client implementation |
 | `admin/` | Reserved for the ADMIN surface |
-| `portal/` | React public portal with Legal Center, Help Center, releases, and platform roadmap |
-| `packaging/` | Windows, Linux, Debian, and future macOS packaging definitions |
-| `.github/workflows/` | Backend, portal, source-safety, and source-release automation |
 
 ## Run the verified backend slice
 
@@ -50,12 +47,6 @@ Use `backend/.env.example` as the configuration template. Real API keys, OAuth s
 
 The project will not mark Android permissions, Windows native integrations, voice, wake word, Bluetooth/BLE, cloud OAuth, Gmail SMTP, llama.cpp inference, or model readiness as complete until a real platform adapter or integration test has passed. The current environment does not provide Flutter/Dart, Android SDK, or Windows GUI SDK tooling, so those areas remain explicitly unimplemented rather than simulated.
 
-## Public portal and project media
-
-The public portal is available at [jarvisport-mehqtqf5.manus.space](https://jarvisport-mehqtqf5.manus.space). It includes the Legal Center, Help Center, release readiness board, API setup guide, and roadmap for Android, Windows, Linux, Ubuntu, Debian, Kali Linux, and macOS DMG packaging.
-
-Project videos and updates are published through [@jarvissubsystems on YouTube](https://www.youtube.com/@jarvissubsystems).
-
 ## Documentation
 
-Start with [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`contracts/JDP-1.0.md`](contracts/JDP-1.0.md), and [`contracts/SETUP_STATE_MACHINE.md`](contracts/SETUP_STATE_MACHINE.md). Legal drafts are under [`docs/legal/`](docs/legal/). The portal guide is in [`portal/README.md`](portal/README.md), and release definitions are in [`packaging/README.md`](packaging/README.md).
+Start with [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`contracts/JDP-1.0.md`](contracts/JDP-1.0.md), and [`contracts/SETUP_STATE_MACHINE.md`](contracts/SETUP_STATE_MACHINE.md). Legal drafts are under [`docs/legal/`](docs/legal/).

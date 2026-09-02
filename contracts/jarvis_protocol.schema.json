@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "J.A.R.V.I.S. Protocol Envelope",
+  "type": "object",
+  "required": ["protocol", "message_id", "message_type", "created_at", "source", "payload"],
+  "properties": {
+    "protocol": { "const": "JDP/1.0" },
+    "message_id": { "type": "string", "minLength": 8 },
+    "message_type": { "enum": ["health", "pair", "command", "diagnostic", "ack", "error"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "source": { "type": "string", "minLength": 1 },
+    "target": { "type": "string" },
+    "requires_confirmation": { "type": "boolean", "default": false },
+    "payload": { "type": "object" }
+  },
+  "additionalProperties": false
+}
