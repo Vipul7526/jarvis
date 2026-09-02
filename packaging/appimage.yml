@@ -1,0 +1,8 @@
+app: JARVIS
+version: 0.1.0
+runtime: linux-x86_64
+# The AppImage is not publishable until a verified Linux client binary exists.
+command: jarvis
+files:
+  - source: ../windows/native_bridge
+    destination: usr/lib/jarvis/native_bridge

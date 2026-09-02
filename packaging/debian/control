@@ -1,0 +1,9 @@
+Package: jarvis
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: J.A.R.V.I.S. Project
+Description: Secure cross-platform personal AI control system
+ J.A.R.V.I.S. routes commands across authorized devices and local or cloud AI.
+ This package metadata is a release scaffold, not an installable binary yet.
